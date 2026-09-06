@@ -18,7 +18,13 @@ namespace To_Do_List
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
             // 3. Đki mô hình MVC (Controller + View)
-            builder.Services.AddControllersWithViews();
+            //builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddRazorOptions(options =>
+            {
+                options.ViewLocationFormats.Clear();
+                options.ViewLocationFormats.Add("/Web/Views/{1}/{0}.cshtml");
+                options.ViewLocationFormats.Add("/Web/Views/Shared/{0}.cshtml");
+            });
 
             // Đki DI
             builder.Services.AddScoped<ITodoService, TodoService>();
