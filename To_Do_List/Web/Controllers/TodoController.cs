@@ -18,7 +18,24 @@ namespace To_Do_List.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var todos = await _todoService.GetAllTodoAsync();
-            return View(todos);
+
+            var viewModels = todos.Select(t => new TodoIndexViewModel
+            {
+                Id = t.Id,
+                Title = t.Title,
+                Description = t.Description,
+                DueDate = t.DueAt,
+                IsCompleted = t.IsCompleted
+            }).ToList();
+
+            return View(viewModels);
+
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
         }
 
         [HttpPost]
