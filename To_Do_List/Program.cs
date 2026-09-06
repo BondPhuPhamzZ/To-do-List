@@ -31,7 +31,7 @@ namespace To_Do_List
 
             //app.MapGet("/", () => "Hello World!");
 
-            app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(name: "default", pattern: "{controller=Todo}/{action=Index}/{id?}");
 
             app.Run();
         }
