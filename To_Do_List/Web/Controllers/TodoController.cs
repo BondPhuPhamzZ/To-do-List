@@ -49,6 +49,7 @@ namespace To_Do_List.Web.Controllers
 
             var todo = new ToDoItem()
             {
+                Id = Guid.NewGuid().ToString(),
                 Title = model.Title,
                 Description = model.Description,
                 DueAt = (DateTime)model.DueDate,
